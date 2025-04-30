@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Riddle Challenge</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      background: linear-gradient(to right, #0f2027, #2c5364);
+      color: white;
+      padding: 30px;
+    }
+    .container { max-width: 600px; margin: auto; }
+    input, button {
+      margin-top: 20px;
+      padding: 12px;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: none;
+    }
+    button { background-color: #28a745; color: white; }
+    #feedback { margin-top: 15px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Riddle Me This...</h1>
+    <p id="question">Loading riddle...</p>
+    <input type="text" id="answer" placeholder="Your answer" />
+    <br />
+    <button onclick="checkAnswer()">Submit</button>
+    <p id="feedback"></p>
+  </div>
+
+  <script>
+    const riddles = [
+      { q: "What has keys but can’t open locks?", a: "piano" },
+      { q: "What gets wetter the more it dries?", a: "towel" },
+      { q: "I speak without a mouth and hear without ears. What am I?", a: "echo" },
+      { q: "The more of me you take, the more you leave behind. What am I?", a: "footsteps" },
+      { q: "What has a neck but no head?", a: "bottle" }
+    ];
+    const riddle = riddles[Math.floor(Math.random() * riddles.length)];
+    document.getElementById("question").textContent = riddle.q;
+
+    function checkAnswer() {
+      const input = document.getElementById("answer").value.trim().toLowerCase();
+      if (input === riddle.a) {
+        window.location.href = "control.html";
+      } else {
+        document.getElementById("feedback").textContent = "Incorrect! Try again.";
+      }
+    }
+  </script>
+</body>
+</html>
