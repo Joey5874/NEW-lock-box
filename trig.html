@@ -36,12 +36,27 @@
 
   <script>
     const questions = [
-      { q: "What is sin(30°)?", a: "0.5" },
-      { q: "What is cos(60°)?", a: "0.5" },
-      { q: "What is tan(45°)?", a: "1" },
-      { q: "What is sin(90°)?", a: "1" },
-      { q: "What is cos(0°)?", a: "1" }
-    ];
+  { q: "What is sin(30°)?", a: "0.5" },
+  { q: "What is cos(60°)?", a: "0.5" },
+  { q: "What is tan(45°)?", a: "1" },
+  { q: "What is sin(90°)?", a: "1" },
+  { q: "What is cos(0°)?", a: "1" },
+  { q: "What is tan(0°)?", a: "0" },
+  { q: "What is sin(0°)?", a: "0" },
+  { q: "What is cos(90°)?", a: "0" },
+  { q: "What is sin(45°)? (rounded)", a: "0.71" },
+  { q: "What is cos(45°)? (rounded)", a: "0.71" },
+  { q: "What is tan(30°)? (rounded)", a: "0.58" },
+  { q: "What is tan(60°)? (rounded)", a: "1.73" },
+  { q: "What is sin(π/2)?", a: "1" },
+  { q: "What is cos(π)?", a: "-1" },
+  { q: "What is sin(π)?", a: "0" },
+  { q: "What is tan(π/4)?", a: "1" },
+  { q: "What is sin(180°)?", a: "0" },
+  { q: "What is cos(180°)?", a: "-1" },
+  { q: "What is tan(90°)?", a: "undefined" },
+  { q: "What is tan(π/2)?", a: "undefined" }
+];
     const trig = questions[Math.floor(Math.random() * questions.length)];
     document.getElementById("question").textContent = trig.q;
 
