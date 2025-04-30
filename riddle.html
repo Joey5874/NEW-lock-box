@@ -35,13 +35,28 @@
   </div>
 
   <script>
-    const riddles = [
-      { q: "What has keys but can’t open locks?", a: "piano" },
-      { q: "What gets wetter the more it dries?", a: "towel" },
-      { q: "I speak without a mouth and hear without ears. What am I?", a: "echo" },
-      { q: "The more of me you take, the more you leave behind. What am I?", a: "footsteps" },
-      { q: "What has a neck but no head?", a: "bottle" }
-    ];
+  const riddles = [
+  { q: "What has keys but can’t open locks?", a: "piano" },
+  { q: "What gets wetter the more it dries?", a: "towel" },
+  { q: "I speak without a mouth and hear without ears. What am I?", a: "echo" },
+  { q: "The more of me you take, the more you leave behind. What am I?", a: "footsteps" },
+  { q: "What has a neck but no head?", a: "bottle" },
+  { q: "What can travel around the world while staying in the same corner?", a: "stamp" },
+  { q: "What comes once in a minute, twice in a moment, but never in a thousand years?", a: "m" },
+  { q: "What has to be broken before you can use it?", a: "egg" },
+  { q: "I’m tall when I’m young and short when I’m old. What am I?", a: "candle" },
+  { q: "What has hands but can’t clap?", a: "clock" },
+  { q: "What can fill a room but takes up no space?", a: "light" },
+  { q: "What has one eye but can’t see?", a: "needle" },
+  { q: "What has many teeth but cannot bite?", a: "comb" },
+  { q: "What gets broken without being held?", a: "promise" },
+  { q: "If you drop me I’m sure to crack, but if you smile, I’ll smile back. What am I?", a: "mirror" },
+  { q: "What has legs but doesn’t walk?", a: "table" },
+  { q: "What runs but never walks, has a bed but never sleeps?", a: "river" },
+  { q: "What has a head and a tail but no body?", a: "coin" },
+  { q: "What has four wheels and flies?", a: "garbage truck" },
+  { q: "The more you take, the bigger I get. What am I?", a: "hole" }
+];
     const riddle = riddles[Math.floor(Math.random() * riddles.length)];
     document.getElementById("question").textContent = riddle.q;
 
