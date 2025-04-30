@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Control the Box</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      background: linear-gradient(to right, #8360c3, #2ebf91);
+      color: white;
+      padding-top: 20%;
+    }
+    h1 { margin-bottom: 20px; }
+    button {
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 10px;
+      margin: 10px;
+      cursor: pointer;
+    }
+    .unlock { background-color: #00c853; }
+    .lock { background-color: #d50000; }
+  </style>
+</head>
+<body>
+  <h1>Control the Box</h1>
+  <button class="unlock" onclick="unlock()">Unlock</button>
+  <button class="lock" onclick="lock()">Lock</button>
+
+  <script>
+    function unlock() {
+      fetch("http://192.168.1.42/unlock")  // Replace with your Arduino unlock route
+        .then(response => alert("Unlock signal sent!"))
+        .catch(error => alert("Failed to connect to Arduino."));
+    }
+
+    function lock() {
+      fetch("http://192.168.1.42/lock")  // Replace with your Arduino lock route
+        .then(response => {
+          alert("Lock signal sent!");
+          window.location.href = "index.html";
+        })
+        .catch(error => alert("Failed to connect to Arduino."));
+    }
+  </script>
+</body>
+</html>
