@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Trigonometry Challenge</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      background: linear-gradient(to right, #4ca1af, #c4e0e5);
+      color: #111;
+      padding: 30px;
+    }
+    .container { max-width: 600px; margin: auto; }
+    input, button {
+      margin-top: 20px;
+      padding: 12px;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: none;
+    }
+    button { background-color: #007bff; color: white; }
+    #feedback { margin-top: 15px; color: red; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Trig Time!</h1>
+    <p id="question">Loading...</p>
+    <input type="text" id="answer" placeholder="Your answer (rounded)" />
+    <br />
+    <button onclick="checkAnswer()">Submit</button>
+    <p id="feedback"></p>
+  </div>
+
+  <script>
+    const questions = [
+      { q: "What is sin(30°)?", a: "0.5" },
+      { q: "What is cos(60°)?", a: "0.5" },
+      { q: "What is tan(45°)?", a: "1" },
+      { q: "What is sin(90°)?", a: "1" },
+      { q: "What is cos(0°)?", a: "1" }
+    ];
+    const trig = questions[Math.floor(Math.random() * questions.length)];
+    document.getElementById("question").textContent = trig.q;
+
+    function checkAnswer() {
+      const input = document.getElementById("answer").value.trim();
+      if (input === trig.a) {
+        window.location.href = "control.html";
+      } else {
+        document.getElementById("feedback").textContent = "Incorrect! Try again.";
+      }
+    }
+  </script>
+</body>
+</html>
