@@ -1,49 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <title>Control the Box</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      text-align: center;
-      background: linear-gradient(to right, #8360c3, #2ebf91);
-      color: white;
-      padding-top: 20%;
-    }
-    h1 { margin-bottom: 20px; }
-    button {
-      padding: 15px 30px;
-      font-size: 1.2rem;
-      border: none;
-      border-radius: 10px;
-      margin: 10px;
-      cursor: pointer;
-    }
-    .unlock { background-color: #00c853; }
-    .lock { background-color: #d50000; }
-  </style>
+  <title>Joey's Lock Box</title>
 </head>
 <body>
-  <h1>Control the Box</h1>
-  <button class="unlock" onclick="unlock()">Unlock</button>
-  <button class="lock" onclick="lock()">Lock</button>
+  <h1>🔐 Joey's Lock Box Control</h1>
+  <button onclick="sendCommand('unlock')">🔓 Unlock</button>
+  <button onclick="sendCommand('lock')">🔒 Lock</button>
+
+  <p id="status"></p>
 
   <script>
-    function unlock() {
-      fetch("http://192.168.1.42/unlock")  // Replace with your Arduino unlock route
-        .then(response => alert("Unlock signal sent!"))
-        .catch(error => alert("Failed to connect to Arduino."));
-    }
+    // 🧠 Replace this with your ESP32's IP shown in Serial Monitor
+    const esp32IP = "http://192.168.1.123";  // EXAMPLE IP
 
-    function lock() {
-      fetch("http://192.168.1.42/lock")  // Replace with your Arduino lock route
-        .then(response => {
-          alert("Lock signal sent!");
-          window.location.href = "index.html";
+    function sendCommand(command) {
+      fetch(`${esp32IP}/${command}`)
+        .then(res => res.text())
+        .then(data => {
+          document.getElementById("status").innerText = `✅ ${data}`;
         })
-        .catch(error => alert("Failed to connect to Arduino."));
+        .catch(err => {
+          document.getElementById("status").innerText = "❌ Could not reach ESP32.";
+          console.error(err);
+        });
     }
   </script>
 </body>
