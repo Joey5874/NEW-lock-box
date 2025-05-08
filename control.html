@@ -1,27 +1,59 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>Joey's Lock Box</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #111;
+      color: white;
+      text-align: center;
+      padding-top: 100px;
+    }
+    h1 {
+      font-size: 3em;
+    }
+    button {
+      font-size: 2em;
+      padding: 20px 40px;
+      margin: 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .unlock {
+      background-color: #28a745;
+    }
+    .unlock:hover {
+      background-color: #218838;
+    }
+    .lock {
+      background-color: #dc3545;
+    }
+    .lock:hover {
+      background-color: #c82333;
+    }
+  </style>
 </head>
 <body>
-  <h1>🔐 Joey's Lock Box Control</h1>
-  <button onclick="sendCommand('unlock')">🔓 Unlock</button>
-  <button onclick="sendCommand('lock')">🔒 Lock</button>
-
-  <p id="status"></p>
+  <h1>🔒 Joey's Lock Box</h1>
+  <button class="unlock" onclick="sendCommand('unlock')">Unlock</button>
+  <button class="lock" onclick="sendCommand('lock')">Lock</button>
 
   <script>
-    const esp32IP = "http://192.168.8.211"; // ← Replace with your ESP32's IP
-
-    function sendCommand(command) {
-      fetch(`${esp32IP}/${command}`)
-        .then(res => res.text())
-        .then(data => {
-          document.getElementById("status").innerText = `✅ ${data}`;
+    function sendCommand(action) {
+      fetch(`http://192.168.8.211/${action}`)
+        .then(response => {
+          if (response.ok) {
+            alert(`${action.toUpperCase()} command sent!`);
+          } else {
+            alert(`Failed to send ${action} command.`);
+          }
         })
-        .catch(err => {
-          document.getElementById("status").innerText = "❌ Could not reach ESP32.";
-          console.error(err);
+        .catch(error => {
+          alert(`Error: ${error}`);
         });
     }
   </script>
